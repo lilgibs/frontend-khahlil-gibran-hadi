@@ -11,7 +11,7 @@ export default function TRSkeleton({ rows = 5, columns = 3 }: TProps) {
           {Array.from({ length: columns }, (_, j) => (
             <td key={`cell-${i}-${j}`}>
               <div className="animate-pulse">
-                <div className="h-[24px] w-full bg-gray-300 rounded-lg" />
+                <div className="h-[20px] w-full bg-gray-300 rounded-lg" />
               </div>
             </td>
           ))}

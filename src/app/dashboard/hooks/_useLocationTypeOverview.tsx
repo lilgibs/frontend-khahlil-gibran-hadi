@@ -2,15 +2,15 @@
 
 import { UserApiRepository } from '@/api/user-api-repository';
 import { IDefaultResponseProps } from '@/models/default-response';
-import { IUserPrrops } from '@/models/domain/user/user';
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 
-export default function useUserViewModel() {
+
+export default function useUserLocationTypeOverview() {
   const [isLoading, setIsLoading] = useState(true)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isError, setIsError] = useState(false)
-  const [data, setData] = useState<IDefaultResponseProps<IUserPrrops[]>>()
+  const [data, setData] = useState<IDefaultResponseProps<{ name: string, value: number }[]>>()
 
   const ApiRepo = new UserApiRepository();
   const { watch, register, setValue } = useForm({
@@ -25,10 +25,7 @@ export default function useUserViewModel() {
       setIsLoading(true)
       setIsError(false)
       setIsSuccess(false)
-      const response = await ApiRepo.getUsers({
-        page: watch(`page`),
-        limit: watch(`limit`)
-      })
+      const response = await ApiRepo.getUserLocationTypeOverview()
       setData(response)
       setIsSuccess(true)
     } catch {
