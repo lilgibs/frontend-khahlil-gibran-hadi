@@ -9,7 +9,7 @@ export default function WebAdminLayout({ children }: { children: React.ReactNode
 
   return (
     <div className='flex flex-row'>
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Sidebar isOpen={isOpen} />
       <div className={`relative flex flex-col flex-1 transition-all duration-300 ease-in-out`}>
         <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
         <main className='p-6'>
