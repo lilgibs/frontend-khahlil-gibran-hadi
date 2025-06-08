@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🖥️ User Insights App — Frontend with Next.js + Tailwind CSS
 
-## Getting Started
+This is the **frontend application** for the User Insights project, built with **Next.js**, **TypeScript**, and **Tailwind CSS**. It visualizes user data retrieved from the backend API, including gender distribution, device brand usage, digital interests, and location types.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Next.js** – React framework for SSR & client-side rendering
+- **TypeScript** – Static typing for JavaScript
+- **Tailwind CSS** – Utility-first CSS framework
+- **Recharts** – Chart library for visualizing aggregated data
+- **Lucide React** – Icon library for UI
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ Features
 
-## Learn More
+- 📊 Dashboard with aggregated user insights:
+  - Gender overview
+  - Brand device usage
+  - Location type distribution
+  - Digital interest popularity
+- 🧑 Paginated User List table
+- 🔍 Sidebar navigation with toggle
+- 🖼️ Hero image on welcome page
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔗 Backend API Source
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All data is consumed from the backend API hosted on Vercel:  
+[🔗 Backend API Documentation](https://be-express-mongoose-user-insight-git-vercel-lilgibs-projects.vercel.app)
 
-## Deploy on Vercel
+You can also view the backend source code here:  
+[📂 GitHub Repository – Backend](https://github.com/lilgibs/be-express-mongoose-user-insight)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔗 Frontend App
+
+The frontend for this project is deployed on Vercel:  
+🔗 [User Insights App (Live on Vercel)](https://fe-next-user-insight-psi.vercel.app/)
+
+---
+
+## 🚀 Getting Started
+
+1. **Clone or download** this repository to your local machine.
+2. Open a terminal or command prompt and navigate to the repository directory.
+3. create a .env.development in the root directory
+    ```env
+    NEXT_PUBLIC_API_URL=https://be-express-mongoose-user-insight-git-vercel-lilgibs-projects.vercel.app/api/
+    ```
+4. **Install dependencies** with the command:
+     ```sh
+    npm install
+    ```
+5. **Start the application** in development mode by running:
+     ```sh
+    npm run dev
+    ```
+6. After the server is running, you can access the API locally at:
+    ```sh
+    http://localhost:3000
+    ```
