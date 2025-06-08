@@ -1,9 +1,10 @@
 import { IMetaPaginationProps } from "@/models/meta-pagination";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 type TPaginationTableProps = {
   data?: IMetaPaginationProps;
-  limit: any
+  limit: UseFormRegisterReturn
   page: (value: number) => void
 };
 
@@ -40,7 +41,7 @@ export default function TablePaginate({ data, limit, page }: TPaginationTablePro
             disabled={!data?.prevPage}
             className={`w-[32px] h-[32px] border rounded-md bg-white flex items-center justify-center ${!data?.prevPage ? "opacity-50" : "cursor-pointer"
               }`}
-            onClick={() => page(data?.page! - 1)}
+            onClick={() => data?.page && page(data.page - 1)}
           >
             <ChevronLeft size={16} color="#514E4E" />
           </button>
@@ -48,7 +49,7 @@ export default function TablePaginate({ data, limit, page }: TPaginationTablePro
             disabled={!data?.nextPage}
             className={`w-[32px] h-[32px] border rounded-md bg-white flex items-center justify-center ${!data?.nextPage ? "opacity-50" : "cursor-pointer"
               }`}
-            onClick={() => page(data?.page! + 1)}
+            onClick={() => data?.page && page(data?.page + 1)}
           >
             <ChevronRight size={16} color="#514E4E" />
           </button>
@@ -56,7 +57,7 @@ export default function TablePaginate({ data, limit, page }: TPaginationTablePro
             disabled={!data?.nextPage}
             className={`w-[32px] h-[32px] border rounded-md bg-white flex items-center justify-center ${!data?.nextPage ? "opacity-50" : "cursor-pointer"
               }`}
-            onClick={() => page(data?.totalPages!)}
+            onClick={() => data?.totalPages && page(data?.totalPages)}
           >
             <ChevronsRight size={16} color="#514E4E" />
           </button>
