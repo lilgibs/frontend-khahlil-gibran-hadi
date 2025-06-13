@@ -1,6 +1,6 @@
 # 🛒 Mini App Purchase Management — Frontend with Next.js + Tailwind CSS
 
-This is the **frontend** for the Mini App Purchase Management project, built using **Next.js**, **TypeScript**, and **Tailwind CSS**. It allows users to view, create, and manage product purchases in a clean and responsive interface.
+This is the **frontend** for the Mini App Purchase Management project, built using **Next.js**, **TypeScript**, and **Tailwind CSS**. It allows users to view, create, and manage product purchases.
 
 ---
 
