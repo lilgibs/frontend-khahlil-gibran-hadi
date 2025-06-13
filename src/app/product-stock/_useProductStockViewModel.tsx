@@ -1,17 +1,18 @@
 'use client'
 
-import { UserApiRepository } from '@/api/user-api-repository';
+import { ProductStockApiRepository } from '@/api/product-stock-api-repostiory';
 import { IDefaultResponseProps } from '@/models/default-response';
+import { IProductStockProps } from '@/models/domain/product-stock/product-stock';
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 
-export default function useUserGenderOverview() {
+export default function useProductStockViewModel() {
   const [isLoading, setIsLoading] = useState(true)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isError, setIsError] = useState(false)
-  const [data, setData] = useState<IDefaultResponseProps<{ name: string, value: number }[]>>()
+  const [data, setData] = useState<IDefaultResponseProps<IProductStockProps[]>>()
 
-  const ApiRepo = new UserApiRepository();
+  const ApiRepo = new ProductStockApiRepository();
   const { watch, register, setValue } = useForm({
     values: {
       page: 1,
@@ -24,7 +25,10 @@ export default function useUserGenderOverview() {
       setIsLoading(true)
       setIsError(false)
       setIsSuccess(false)
-      const response = await ApiRepo.getUserGenderOverview()
+      const response = await ApiRepo.getProductStocks({
+        page: watch(`page`),
+        limit: watch(`limit`)
+      })
       setData(response)
       setIsSuccess(true)
     } catch {

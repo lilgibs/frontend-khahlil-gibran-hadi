@@ -1,5 +1,5 @@
 
-import { LayoutGrid, User } from 'lucide-react'
+import { Package, ShoppingBag, Warehouse } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
@@ -23,17 +23,24 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
         <div className='flex flex-col gap-4'>
           <Link
             className='p-2 flex gap-4 hover:bg-blue-50 rounded-md'
-            href='/dashboard'
+            href='/product'
           >
-            <LayoutGrid />
-            <span className={`${isOpen ? 'block' : 'hidden'} text-nowrap overflow-hidden`}>Dashboard</span>
+            <Package />
+            <span className={`${isOpen ? 'block' : 'hidden'} text-nowrap overflow-hidden`}>Product</span>
           </Link>
           <Link
             className='p-2 flex gap-4 hover:bg-blue-50 rounded-md'
-            href='/user'
+            href='/product-stock'
           >
-            <User />
-            <span className={`${isOpen ? 'block' : 'hidden'} text-nowrap overflow-hidden`}>User</span>
+            <Warehouse />
+            <span className={`${isOpen ? 'block' : 'hidden'} text-nowrap overflow-hidden`}>Product Stock</span>
+          </Link>
+          <Link
+            className='p-2 flex gap-4 hover:bg-blue-50 rounded-md'
+            href='/purchase'
+          >
+            <ShoppingBag />
+            <span className={`${isOpen ? 'block' : 'hidden'} text-nowrap overflow-hidden`}>Purchase</span>
           </Link>
         </div>
       </div>

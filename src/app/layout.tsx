@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "User Insight App",
+  title: "Mini App Purchase Management",
   description: "Created by Lil Gibran",
   icons: { icon: "/assets/png/logo.png", }
 };
