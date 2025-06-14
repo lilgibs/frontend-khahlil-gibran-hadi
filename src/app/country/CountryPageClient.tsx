@@ -2,7 +2,6 @@
 
 import React from 'react'
 import useCountryViewModel from './_useCountryViewModel';
-import TablePaginate from '@/components/TablePaginate';
 import TRSkeleton from '@/components/TRSkeleton';
 import { DollarSign } from 'lucide-react';
 import Link from 'next/link';

@@ -12,7 +12,7 @@ export default function useGetPorts(idCountry: string) {
   const [data, setData] = useState<IDefaultResponseProps<IPortProps[]>>()
 
   const ApiRepo = new CountryApiRepository();
- 
+
   const fetchData = async (idCountry: string) => {
     try {
       setIsLoading(true)
@@ -30,7 +30,9 @@ export default function useGetPorts(idCountry: string) {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      idCountry && fetchData(idCountry)
+      if (idCountry) {
+        fetchData(idCountry)
+      }
     }, 500)
 
     return () => clearTimeout(timeout)

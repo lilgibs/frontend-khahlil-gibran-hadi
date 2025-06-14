@@ -3,7 +3,7 @@
 import { CountryApiRepository } from '@/api/country-api-repostiory'
 import { IDefaultResponseProps } from '@/models/default-response'
 import { ICountryProps } from '@/models/domain/country/country'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 export default function useGetCountries() {
