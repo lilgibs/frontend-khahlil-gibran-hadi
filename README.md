@@ -25,6 +25,13 @@ This is the **frontend** for the Mini App project focused on **Country listing**
 
 ---
 
+## 🔗 Live Demo
+
+You can try the deployed version of this app here:  
+🌐 [mini-app-cost-estimator.vercel.app](https://mini-app-cost-estimator.vercel.app/country/cost-estimator)
+
+---
+
 ## 🚀 Getting Started
 
 1. **Clone or download** this repository to your local machine.
