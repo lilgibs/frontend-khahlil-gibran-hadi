@@ -37,7 +37,9 @@ export default function usePurchaseViewModel() {
   }, [items.data?.data, watch(`idItem`)]);
 
   useEffect(() => {
-    watch(`discount`) > 100 && setValue(`discount`, 100)
+    if (watch(`discount`) > 100) {
+      setValue(`discount`, 100)
+    }
   }, [watch(`discount`)]);
 
   useEffect(() => {

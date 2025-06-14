@@ -28,8 +28,7 @@ export default function UserPageClient() {
         <div className='flex flex-col gap-2'>
           <p className='font-semibold text-sm text-neutral-600'>Country</p>
           {model.countries.isLoading && <InputFieldSkeleton />}
-          {
-            model.countries.isSuccess && !model.countries.isLoading &&
+          {model.countries.isSuccess && !model.countries.isLoading && (
             <Controller
               name={`idCountry`}
               control={model.control}
@@ -40,7 +39,7 @@ export default function UserPageClient() {
                   isClearable={true}
                   isSearchable={true}
                   options={model.countries.data?.data?.map((country) => ({ label: country.nama_negara, value: country.id_negara })) || []}
-                  onChange={selected => { selected ? field.onChange(selected.value) : field.onChange("") }}
+                  onChange={selected => field.onChange(selected ? selected.value : "")}
                   value={
                     model.countries.data?.data?.map(val => ({ value: val.id_negara, label: val.nama_negara })).find(option => option.value === field.value)
                   }
@@ -67,13 +66,12 @@ export default function UserPageClient() {
                 />
               )}
             />
-          }
+          )}
         </div>
         <div className='flex flex-col gap-2'>
           <p className='font-semibold text-sm text-neutral-600'>Port</p>
           {(model.ports.isLoading || !model.watch(`idCountry`)) && <InputFieldSkeleton />}
-          {
-            model.ports.isSuccess && !model.ports.isLoading && model.watch(`idCountry`) &&
+          {model.ports.isSuccess && !model.ports.isLoading && model.watch(`idCountry`) && (
             <Controller
               name={`idPort`}
               control={model.control}
@@ -84,7 +82,7 @@ export default function UserPageClient() {
                   isClearable={true}
                   isSearchable={true}
                   options={model.ports.data?.data?.map((country) => ({ label: country.nama_pelabuhan, value: country.id_pelabuhan })) || []}
-                  onChange={selected => { selected ? field.onChange(selected.value) : field.onChange("") }}
+                  onChange={selected => field.onChange(selected ? selected.value : "")}
                   value={
                     model.ports.data?.data?.map(val => ({ value: val.id_pelabuhan, label: val.nama_pelabuhan })).find(option => option.value === field.value) || null
                   }
@@ -111,13 +109,12 @@ export default function UserPageClient() {
                 />
               )}
             />
-          }
+          )}
         </div>
         <div className='flex flex-col gap-2'>
           <p className='font-semibold text-sm text-neutral-600'>Item</p>
           {(model.items.isLoading || !model.watch(`idPort`)) && <InputFieldSkeleton />}
-          {
-            model.items.isSuccess && !model.items.isLoading && model.watch(`idPort`) &&
+          {model.items.isSuccess && !model.items.isLoading && model.watch(`idPort`) && (
             <Controller
               name={`idItem`}
               control={model.control}
@@ -128,7 +125,7 @@ export default function UserPageClient() {
                   isClearable={true}
                   isSearchable={true}
                   options={model.items.data?.data?.map((country) => ({ label: country.nama_barang, value: country.id_barang })) || []}
-                  onChange={selected => { selected ? field.onChange(selected.value) : field.onChange("") }}
+                  onChange={selected => field.onChange(selected ? selected.value : "")}
                   value={
                     model.items.data?.data?.map(val => ({ value: val.id_barang, label: val.nama_barang })).find(option => option.value === field.value) || null
                   }
@@ -155,7 +152,7 @@ export default function UserPageClient() {
                 />
               )}
             />
-          }
+          )}
         </div>
         <div className='flex flex-col gap-2 text-sm'>
           <p className='font-semibold text-neutral-600'>Item Description</p>
