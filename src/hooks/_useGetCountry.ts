@@ -1,18 +1,18 @@
 `use client`
 
-import { ProductApiRepository } from '@/api/product-api-repostior'
+import { CountryApiRepository } from '@/api/country-api-repostiory'
 import { IDefaultResponseProps } from '@/models/default-response'
-import { IProductProps } from '@/models/domain/product/product'
+import { ICountryProps } from '@/models/domain/country/country'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-export default function useGetProducts() {
+export default function useGetCountries() {
   const [isLoading, setIsLoading] = useState(true)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isError, setIsError] = useState(false)
-  const [data, setData] = useState<IDefaultResponseProps<IProductProps[]>>()
+  const [data, setData] = useState<IDefaultResponseProps<ICountryProps[]>>()
 
-  const ApiRepo = new ProductApiRepository();
+  const ApiRepo = new CountryApiRepository();
   const { watch, register, setValue } = useForm({
     values: {
       page: 1,
@@ -25,10 +25,7 @@ export default function useGetProducts() {
       setIsLoading(true)
       setIsError(false)
       setIsSuccess(false)
-      const response = await ApiRepo.getProducts({
-        page: watch(`page`),
-        limit: watch(`limit`)
-      })
+      const response = await ApiRepo.getCountries()
       setData(response)
       setIsSuccess(true)
     } catch {
@@ -39,11 +36,9 @@ export default function useGetProducts() {
   }
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
+
       fetchData()
-    }, 500)
-    return () => clearTimeout(timeoutId)
-  }, [watch(`page`), watch(`limit`)])
+  }, [])
 
   return {
     isLoading,

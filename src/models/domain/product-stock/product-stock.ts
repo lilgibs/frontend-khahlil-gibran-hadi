@@ -1,4 +1,4 @@
-import { IProductProps } from "../product/product"
+import { IProductProps } from "../country/country"
 
 export interface IProductStockProps {
   id: string

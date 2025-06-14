@@ -1,4 +1,4 @@
-import UserPageClient from "./ProductPageClient";
+import UserPageClient from "./CountryPageClient";
 
 export default async function page() {
 
