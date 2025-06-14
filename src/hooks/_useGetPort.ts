@@ -1,4 +1,4 @@
-`use client`
+'use client'
 
 import { CountryApiRepository } from '@/api/country-api-repostiory'
 import { IDefaultResponseProps } from '@/models/default-response'

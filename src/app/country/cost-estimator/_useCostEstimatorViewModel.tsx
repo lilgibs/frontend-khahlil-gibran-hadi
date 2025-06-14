@@ -3,7 +3,7 @@ import useGetCountries from '@/hooks/_useGetCountry';
 import useGetItems from '@/hooks/_useGetItem';
 import useGetPorts from '@/hooks/_useGetPort';
 import { useEffect } from 'react';
-import { set, useForm } from 'react-hook-form';;
+import { useForm } from 'react-hook-form';;
 
 export default function usePurchaseViewModel() {
   const { watch, register, setValue, control, getValues } = useForm({
