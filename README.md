@@ -1,4 +1,4 @@
-# 🛒 Mini App Purchase Management — Frontend with Next.js + Tailwind CSS
+# 🛒 Mini App Cost Estimator — Frontend with Next.js + Tailwind CSS
 
 This is the **frontend** for the Mini App project focused on **Country listing** and **Cost Estimation**. Built with **Next.js**, **TypeScript**, and **Tailwind CSS**, the app allows users to select a country, view ports, choose items, and calculate total costs dynamically.
 
