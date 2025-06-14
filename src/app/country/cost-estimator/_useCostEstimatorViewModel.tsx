@@ -2,6 +2,7 @@
 import useGetCountries from '@/hooks/_useGetCountry';
 import useGetItems from '@/hooks/_useGetItem';
 import useGetPorts from '@/hooks/_useGetPort';
+import { currencyFormat } from '@/utils/currencyFormat';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';;
 
@@ -22,13 +23,19 @@ export default function usePurchaseViewModel() {
   const items = useGetItems(watch(`idPort`));
 
   useEffect(() => {
-    console.log(watch(`idCountry`))
     setValue(`idPort`, "");
     setValue(`idItem`, "");
     setValue(`discount`, 0);
     setValue(`price`, 0);
     setValue(`totalPrice`, "");
   }, [watch(`idCountry`)]);
+
+  useEffect(() => {
+    setValue(`idItem`, "");
+    setValue(`discount`, 0);
+    setValue(`price`, 0);
+    setValue(`totalPrice`, "");
+  }, [watch(`idPort`)]);
 
   useEffect(() => {
     const data = items.data?.data?.find((item) => item.id_barang === watch(`idItem`));
@@ -44,11 +51,7 @@ export default function usePurchaseViewModel() {
 
   useEffect(() => {
     setValue(`totalPrice`,
-      Intl.NumberFormat("id-ID", {
-        style: "currency",
-        currency: "IDR",
-        minimumFractionDigits: 0,
-      }).format(watch(`price`) * (1 - watch(`discount`) / 100))
+      currencyFormat(watch(`price`) * (1 - watch(`discount`) / 100))
     );
   }, [watch(`price`), watch(`discount`)]);
 

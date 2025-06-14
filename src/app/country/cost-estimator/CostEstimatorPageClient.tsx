@@ -7,6 +7,7 @@ import { Controller } from 'react-hook-form';
 import InputFieldSkeleton from '@/components/skeleton/InputFieldSkeleton';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import { currencyFormat } from '@/utils/currencyFormat';
 
 export default function UserPageClient() {
   const model = useCostEstimatorViewModel();
@@ -155,24 +156,24 @@ export default function UserPageClient() {
           )}
         </div>
         <div className='flex flex-col gap-2 text-sm'>
-          <p className='font-semibold text-neutral-600'>Item Description</p>
+          <p className='font-semibold text-neutral-600'>Item Details</p>
           <div className='p-4 flex flex-col gap-4 border rounded-lg border-neutral-300'>
             <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
               <div className="flex flex-col gap-2">
-                <p className='font-semibold text-neutral-600'>Item Name</p>
+                <p className='font-semibold text-neutral-600'>Name</p>
                 <p>{model.items.data?.data?.find(item => item.id_barang === model.watch(`idItem`))?.nama_barang || "-"}</p>
               </div>
               <div className="flex flex-col gap-2">
                 <p className='font-semibold text-neutral-600'>Price</p>
-                <p>{model.items.data?.data?.find(item => item.id_barang === model.watch(`idItem`))?.harga || "-"}</p>
+                <p>{currencyFormat(model.items.data?.data?.find(item => item.id_barang === model.watch(`idItem`))?.harga || 0) || "-"}</p>
               </div>
               <div className="flex flex-col gap-2">
                 <p className='font-semibold text-neutral-600'>Discount</p>
-                <p>{model.items.data?.data?.find(item => item.id_barang === model.watch(`idItem`))?.diskon || "-"}</p>
+                <p>{model.items.data?.data?.find(item => item.id_barang === model.watch(`idItem`))?.diskon || 0}%</p>
               </div>
             </div>
             <div className='flex flex-col gap-2'>
-              <p className='font-semibold text-neutral-600'>Item Description</p>
+              <p className='font-semibold text-neutral-600'>Description</p>
               <p>{model.items.data?.data?.find(item => item.id_barang === model.watch(`idItem`))?.description || "-"}</p>
             </div>
           </div>
