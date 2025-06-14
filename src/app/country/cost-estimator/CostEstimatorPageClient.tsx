@@ -39,10 +39,10 @@ export default function UserPageClient() {
                   {...field}
                   isClearable={true}
                   isSearchable={true}
-                  options={model.countries.data?.data?.map((country) => ({ label: country.nama_negara, value: country.id_negara })) || []}
+                  options={model.countries.data?.data?.map((country) => ({ label: country.kode_negara + " - " + country.nama_negara, value: country.id_negara })) || []}
                   onChange={selected => field.onChange(selected ? selected.value : "")}
                   value={
-                    model.countries.data?.data?.map(val => ({ value: val.id_negara, label: val.nama_negara })).find(option => option.value === field.value)
+                    model.countries.data?.data?.map(val => ({ value: val.id_negara, label: val.kode_negara + " - " + val.nama_negara })).find(option => option.value === field.value)
                   }
                   classNames={{
                     control: () => "min-w-[250px] h-[42px]",
@@ -125,10 +125,10 @@ export default function UserPageClient() {
                   {...field}
                   isClearable={true}
                   isSearchable={true}
-                  options={model.items.data?.data?.map((country) => ({ label: country.nama_barang, value: country.id_barang })) || []}
+                  options={model.items.data?.data?.map((val) => ({ label: val.id_barang + " - " + val.nama_barang, value: val.id_barang })) || []}
                   onChange={selected => field.onChange(selected ? selected.value : "")}
                   value={
-                    model.items.data?.data?.map(val => ({ value: val.id_barang, label: val.nama_barang })).find(option => option.value === field.value) || null
+                    model.items.data?.data?.map(val => ({ value: val.id_barang, label: val.id_barang + " - " + val.nama_barang })).find(option => option.value === field.value) || null
                   }
                   classNames={{
                     control: () => "min-w-[250px] h-[42px]",
