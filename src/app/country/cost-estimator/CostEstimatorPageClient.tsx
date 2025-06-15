@@ -28,7 +28,11 @@ export default function UserPageClient() {
       <div className='lg:max-w-3/4 flex flex-col gap-4'>
         <div className='flex flex-col gap-2'>
           <p className='font-semibold text-sm text-neutral-600'>Country</p>
-          {model.countries.isLoading && <InputFieldSkeleton />}
+          {!model.countries.isInitialized && (
+            <InputFieldSkeleton
+              isLoading={model.countries.isLoading}
+            />
+          )}
           {model.countries.isSuccess && !model.countries.isLoading && (
             <Controller
               name={`idCountry`}
@@ -50,7 +54,7 @@ export default function UserPageClient() {
                   styles={{
                     control: (base, state) => ({
                       ...base,
-                      borderRadius: "6px",
+                      borderRadius: "8px",
                       outline: "none",
                       boxShadow: "none",
                       borderColor: state.isFocused ? "#d1d5db" : base.borderColor,
@@ -71,7 +75,12 @@ export default function UserPageClient() {
         </div>
         <div className='flex flex-col gap-2'>
           <p className='font-semibold text-sm text-neutral-600'>Port</p>
-          {(model.ports.isLoading || !model.watch(`idCountry`)) && <InputFieldSkeleton />}
+          {(!model.ports.isInitialized || !model.watch(`idCountry`)) && (
+            <InputFieldSkeleton
+              isLoading={model.ports.isLoading}
+              message={"Please select a country first"}
+            />
+          )}
           {model.ports.isSuccess && !model.ports.isLoading && model.watch(`idCountry`) && (
             <Controller
               name={`idPort`}
@@ -93,7 +102,7 @@ export default function UserPageClient() {
                   styles={{
                     control: (base, state) => ({
                       ...base,
-                      borderRadius: "6px",
+                      borderRadius: "8px",
                       outline: "none",
                       boxShadow: "none",
                       borderColor: state.isFocused ? "#d1d5db" : base.borderColor,
@@ -114,7 +123,12 @@ export default function UserPageClient() {
         </div>
         <div className='flex flex-col gap-2'>
           <p className='font-semibold text-sm text-neutral-600'>Item</p>
-          {(model.items.isLoading || !model.watch(`idPort`)) && <InputFieldSkeleton />}
+          {(!model.items.isInitialized || !model.watch(`idPort`)) && (
+            <InputFieldSkeleton
+              isLoading={model.items.isLoading}
+              message={"Please select a port first"}
+            />
+          )}
           {model.items.isSuccess && !model.items.isLoading && model.watch(`idPort`) && (
             <Controller
               name={`idItem`}
@@ -136,7 +150,7 @@ export default function UserPageClient() {
                   styles={{
                     control: (base, state) => ({
                       ...base,
-                      borderRadius: "6px",
+                      borderRadius: "8px",
                       outline: "none",
                       boxShadow: "none",
                       borderColor: state.isFocused ? "#d1d5db" : base.borderColor,
@@ -183,7 +197,7 @@ export default function UserPageClient() {
           <input
             disabled={!model.watch(`idItem`)}
             type="text"
-            className='w-full h-[42px] px-4 border border-neutral-300 rounded-md bg-white focus:outline-none disabled:bg-neutral-300'
+            className='w-full h-[42px] px-4 border border-neutral-300 rounded-lg bg-white focus:outline-none disabled:bg-neutral-300'
             onKeyDown={(e) => {
               const allowedKeys = [
                 "Backspace", "Tab", "ArrowLeft", "ArrowRight", "Delete",
@@ -202,7 +216,7 @@ export default function UserPageClient() {
           <input
             disabled={!model.watch(`idItem`)}
             type="text"
-            className='w-full h-[42px] px-4 border border-neutral-300 rounded-md bg-white focus:outline-none disabled:bg-neutral-300'
+            className='w-full h-[42px] px-4 border border-neutral-300 rounded-lg bg-white focus:outline-none disabled:bg-neutral-300'
             onKeyDown={(e) => {
               const allowedKeys = [
                 "Backspace", "Tab", "ArrowLeft", "ArrowRight", "Delete",
@@ -221,7 +235,7 @@ export default function UserPageClient() {
           <input
             readOnly
             type="text"
-            className='w-full h-[42px] px-4 border border-neutral-300 rounded-md focus:outline-none read-only:bg-neutral-300'
+            className='w-full h-[42px] px-4 border border-neutral-300 rounded-lg focus:outline-none read-only:bg-neutral-300'
             {...model.register(`totalPrice`)}
           />
         </div>
