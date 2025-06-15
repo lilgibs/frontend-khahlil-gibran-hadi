@@ -7,7 +7,8 @@ import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 export default function useGetCountries() {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
+  const [isInitialized, setIsInitialized] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isError, setIsError] = useState(false)
   const [data, setData] = useState<IDefaultResponseProps<ICountryProps[]>>()
@@ -21,10 +22,11 @@ export default function useGetCountries() {
   })
 
   const fetchData = async () => {
+    setIsLoading(true)
+    setIsInitialized(false)
+    setIsError(false)
+    setIsSuccess(false)
     try {
-      setIsLoading(true)
-      setIsError(false)
-      setIsSuccess(false)
       const response = await ApiRepo.getCountries()
       setData(response)
       setIsSuccess(true)
@@ -32,16 +34,18 @@ export default function useGetCountries() {
       setIsError(true)
     } finally {
       setIsLoading(false)
+      setIsInitialized(true)
     }
   }
 
   useEffect(() => {
 
-      fetchData()
+    fetchData()
   }, [])
 
   return {
     isLoading,
+    isInitialized,
     isSuccess,
     isError,
     data,

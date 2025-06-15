@@ -6,7 +6,8 @@ import { IPortProps } from '@/models/domain/port/port'
 import { useEffect, useState } from 'react'
 
 export default function useGetPorts(idCountry: string) {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
+  const [isInitialized, setIsInitialized] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isError, setIsError] = useState(false)
   const [data, setData] = useState<IDefaultResponseProps<IPortProps[]>>()
@@ -14,16 +15,18 @@ export default function useGetPorts(idCountry: string) {
   const ApiRepo = new CountryApiRepository();
 
   const fetchData = async (idCountry: string) => {
+    setIsLoading(true)
+    setIsInitialized(false)
+    setIsError(false)
+    setIsSuccess(false)
     try {
-      setIsLoading(true)
-      setIsError(false)
-      setIsSuccess(false)
       const response = await ApiRepo.getPorts(idCountry)
       setData(response)
       setIsSuccess(true)
     } catch {
       setIsError(true)
     } finally {
+      setIsInitialized(true)
       setIsLoading(false)
     }
   }
@@ -40,6 +43,7 @@ export default function useGetPorts(idCountry: string) {
 
   return {
     isLoading,
+    isInitialized,
     isSuccess,
     isError,
     data,

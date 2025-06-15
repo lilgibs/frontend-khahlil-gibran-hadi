@@ -6,7 +6,8 @@ import { IItemProps } from '@/models/domain/item/item'
 import { useEffect, useState } from 'react'
 
 export default function useGetItems(idPort: string) {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
+  const [isInitialized, setIsInitialized] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isError, setIsError] = useState(false)
   const [data, setData] = useState<IDefaultResponseProps<IItemProps[]>>()
@@ -14,16 +15,18 @@ export default function useGetItems(idPort: string) {
   const ApiRepo = new CountryApiRepository();
 
   const fetchData = async (idPort: string) => {
+    setIsLoading(true)
+    setIsInitialized(false)
+    setIsError(false)
+    setIsSuccess(false)
     try {
-      setIsLoading(true)
-      setIsError(false)
-      setIsSuccess(false)
       const response = await ApiRepo.getItems(idPort)
       setData(response)
       setIsSuccess(true)
     } catch {
       setIsError(true)
     } finally {
+      setIsInitialized(true)
       setIsLoading(false)
     }
   }
@@ -40,6 +43,7 @@ export default function useGetItems(idPort: string) {
 
   return {
     isLoading,
+    isInitialized,
     isSuccess,
     isError,
     data,
