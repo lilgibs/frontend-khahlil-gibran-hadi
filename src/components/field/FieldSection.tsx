@@ -7,7 +7,7 @@ interface IProps {
 
 export default function FieldSection({ title, children }: IProps) {
   return (
-    <div className={`flex-1 flex flex-col md:flex-row gap-2 bg`}>
+    <div className={`flex-1 flex flex-col md:flex-row gap-2 md:gap-4`}>
       <div className='w-full md:w-1/3 flex flex-col md:flex-row md:justify-between gap-2'>
         <p className='text-sm text-neutral-600 font-semibold'>{title}</p>
         <div className='hidden md:block h-full w-[2px] bg-blue-900' />
