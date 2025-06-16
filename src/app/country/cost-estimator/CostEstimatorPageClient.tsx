@@ -207,7 +207,7 @@ export default function UserPageClient() {
             <input
               disabled={!model.watch(`idItem`)}
               type="text"
-              className='w-full h-[42px] px-4 border border-neutral-300 rounded-lg bg-white focus:outline-none disabled:bg-neutral-300'
+              className='w-full h-[42px] px-4 border border-neutral-300 rounded-lg bg-white focus:outline-none disabled:bg-gray-300'
               onKeyDown={(e) => {
                 const allowedKeys = [
                   "Backspace", "Tab", "ArrowLeft", "ArrowRight", "Delete",
@@ -226,7 +226,7 @@ export default function UserPageClient() {
             <input
               disabled={!model.watch(`idItem`)}
               type="text"
-              className='w-full h-[42px] px-4 border border-neutral-300 rounded-lg bg-white focus:outline-none disabled:bg-neutral-300'
+              className='w-full h-[42px] px-4 border border-neutral-300 rounded-lg bg-white focus:outline-none disabled:bg-gray-300'
               onKeyDown={(e) => {
                 const allowedKeys = [
                   "Backspace", "Tab", "ArrowLeft", "ArrowRight", "Delete",
@@ -245,7 +245,7 @@ export default function UserPageClient() {
             <input
               readOnly
               type="text"
-              className='w-full h-[42px] px-4 border border-neutral-300 rounded-lg focus:outline-none read-only:bg-neutral-300'
+              className='w-full h-[42px] px-4 border border-neutral-300 rounded-lg focus:outline-none read-only:bg-gray-300'
               {...model.register(`totalPrice`)}
             />
           </div>
